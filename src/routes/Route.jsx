@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
 import Main_Layouts from "../layouts/Main_Layouts";
-import Statistics from "../pages/Statistics ";
-import Applied_Jobs from "../pages/Applied_Jobs";
 import Blog from "../pages/Blog";
-
+import Applied_jobs from '../pages/Applied_Jobs'
+import Home from "../pages/Home";
+import Job_details from "../pages/Job_details";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -15,16 +14,17 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/statistics',
-                element: <Statistics />
-            },
-            {
-                path: '/applied-jobs',
-                element: <Applied_Jobs />
+                path: '/applied',
+                element: <Applied_jobs/>,
             },
             {
                 path: '/blog',
                 element: <Blog />
+            },
+            {
+                path: '/job/:id',
+                element: <Job_details />,
+                loader: ()=> fetch(`/public/jobs.json`)
             }
         ]
     }

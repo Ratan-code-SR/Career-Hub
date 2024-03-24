@@ -3,12 +3,13 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 
 
+
 const Main_Layouts = () => {
     return (
         <div>
             <Header></Header>
-            <Outlet/>
-            <Footer/>
+            <Outlet />
+            <Footer />
         </div>
     );
 };
