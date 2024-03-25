@@ -1,12 +1,19 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { saveJobs } from "../utilities";
 
 const Job_details = () => {
     const jobs = useLoaderData();
     const { id } = useParams();
     const idInt = parseInt(id);
     const job = jobs.find(job => job.id === idInt);
-
     const { job_description, job_responsibility, educational_requirements, experiences, contact_information, salary, job_type, location, job_title } = job;
+
+    const handleClick = (jobs) => {
+        saveJobs(jobs)
+    }
+
     return (
         <div className="px-2">
             <h1 className="text-center text-3xl">job details</h1>
@@ -33,10 +40,11 @@ const Job_details = () => {
                             <h1>Email: {contact_information.email}</h1>
                             <h1>Address: {contact_information.address}</h1>
                         </div>
-                        <button type="button" className="flex btn btn-success items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">Apply Now</button>
+                        <button onClick={handleClick(jobs)} type="button" className="flex btn btn-success items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">Apply Now</button>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -1,9 +1,16 @@
+import { useEffect, useState } from "react";
+import { getJobs } from "../utilities";
 
 
 const Applied_Jobs = () => {
+    const [job, setJobs] = useState([])
+    useEffect(() => {
+        const localSave = getJobs()
+        setJobs(localSave)
+    }, [])
     return (
         <div>
-            <h1>Applied Jobs</h1>
+
         </div>
     );
 };
